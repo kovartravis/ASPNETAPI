@@ -49,13 +49,19 @@ namespace ExercisesAPI
                 new Act
                 {
                     Id = 1,
-                    Name = "test0"
+                    Name = "Squat"
                 },
 
                 new Act
                 {
                     Id = 2,
-                    Name = "test1"
+                    Name = "Bench"
+                },
+
+                new Act
+                {
+                    Id = 3,
+                    Name = "Deadlift"
                 }
             };
 

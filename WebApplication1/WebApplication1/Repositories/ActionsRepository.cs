@@ -17,9 +17,15 @@ namespace ExercisesAPI.Repositories
         {
             this.apiContext = context;
         }
-        public IEnumerable<Act> findAll()
+
+        public IQueryable<Act> FindAll()
         {
             return from Act in apiContext.Actions select Act;
+        }
+
+        public IQueryable<Act> FindById(UInt32 id)
+        {
+            return from Act in apiContext.Actions where Act.Id == id select Act; ;
         }
     }
 }

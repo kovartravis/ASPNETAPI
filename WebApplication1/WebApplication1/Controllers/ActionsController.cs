@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
 using ExercisesAPI.Database;
 using ExercisesAPI.Models;
 using ExercisesAPI.Services;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace ExercisesAPI.Controllers
 {
@@ -23,16 +21,30 @@ namespace ExercisesAPI.Controllers
 
         // GET api/actions
         [HttpGet]
-        public IEnumerable<Act> Get()
+        public IActionResult Get()
         {
-            return this.actionsService.getAllActions();
+            var result = actionsService.getAll();
+            
+            if(result == null)
+            {
+                return NoContent();
+            }
+
+            return Ok(result);
         }
 
         // GET api/actions/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(UInt32 id)
         {
-            return "value";
+            var result = actionsService.getById(id);
+
+            if(result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
         // POST api/actions

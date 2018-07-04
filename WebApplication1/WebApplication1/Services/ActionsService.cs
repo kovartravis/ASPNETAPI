@@ -17,9 +17,14 @@ namespace ExercisesAPI.Services
             this.actionsRepository = new ActionsRepository(context);
         }
 
-        public IEnumerable<Act> getAllActions()
+        public IEnumerable<Act> getAll()
         {
-            return actionsRepository.findAll();
+            return actionsRepository.FindAll();
+        }
+
+        public Act getById(UInt32 id)
+        {
+            return actionsRepository.FindById(id).FirstOrDefault();
         }
     }
 }
